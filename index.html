@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b63ce">
+<meta name="description" content="وين دواي؟ - منصة خيرية للبحث عن الأدوية وربط المرضى بالصيدليات في السودان">
+<title>وين دواي؟ | أين أجد دوائي؟</title>
+<style>
+:root{--blue:#0b63ce;--blue2:#084b9b;--light:#f5f9ff;--text:#162033;--muted:#68758a;--green:#118a55;--red:#c93636;--border:#dfe7f2;--card:#fff;--shadow:0 8px 28px rgba(20,60,110,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--light);color:var(--text);line-height:1.7}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.container{width:min(1120px,94%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:900;color:var(--blue);font-size:1.35rem}.brand small{display:block;color:var(--muted);font-size:.67rem;font-weight:500}
+.nav-actions{display:flex;gap:7px;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:10px 14px;background:var(--blue);color:white;font-weight:700}.btn:hover{background:var(--blue2)}.btn.secondary{background:#eaf2ff;color:var(--blue)}.btn.ghost{background:transparent;color:var(--blue);border:1px solid var(--border)}.btn.danger{background:#ffeaea;color:var(--red)}
+.hero{padding:42px 0 28px;background:linear-gradient(180deg,#eaf3ff,#f5f9ff)}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:25px;align-items:center}.sign{display:inline-block;background:#fff;border:1px solid var(--border);box-shadow:var(--shadow);border-radius:18px;padding:14px 20px;color:var(--blue);font-size:2rem;font-weight:900;transform:rotate(-1deg)}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.2;margin:18px 0 10px}.hero p{color:var(--muted);font-size:1.08rem}.searchbox{background:#fff;padding:14px;border-radius:20px;box-shadow:var(--shadow);border:1px solid var(--border)}.searchrow{display:flex;gap:8px}.searchrow input{flex:1;min-width:0;border:1px solid var(--border);border-radius:13px;padding:13px 14px;outline:none}.searchrow input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #0b63ce18}.hint{font-size:.82rem;color:var(--muted);margin-top:8px}
+section{padding:30px 0}.section-title{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:15px}.section-title h2{margin:0}.section-title span{color:var(--muted);font-size:.9rem}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.card h3{margin:0 0 5px}.muted{color:var(--muted)}.badge{display:inline-flex;padding:4px 9px;border-radius:999px;font-size:.78rem;font-weight:800}.ok{background:#e7f7ef;color:var(--green)}.no{background:#ffeaea;color:var(--red)}.wait{background:#fff4d8;color:#8a6100}.result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.pharmacy-card{position:relative}.price{font-weight:900;color:var(--blue);font-size:1.08rem}.meta{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:.86rem;margin:10px 0}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{text-align:center}.stat b{font-size:1.7rem;color:var(--blue);display:block}.list{display:flex;flex-direction:column;gap:9px}.list-item{padding:11px;border:1px solid var(--border);border-radius:12px;background:#fff}
+footer{padding:25px 0 45px;color:var(--muted);font-size:.85rem;text-align:center}.designer{font-size:.68rem;opacity:.62;margin-top:5px}
+.modal{position:fixed;inset:0;background:#07172c99;display:none;align-items:center;justify-content:center;padding:15px;z-index:50}.modal.show{display:flex}.modal-box{background:#fff;border-radius:20px;width:min(720px,100%);max-height:90vh;overflow:auto;padding:20px}.modal-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:12px}.close{border:0;background:#eef3f9;border-radius:10px;padding:7px 11px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field input,.field select,.field textarea{border:1px solid var(--border);border-radius:11px;padding:10px;background:#fff}.field textarea{min-height:90px;resize:vertical}.notice{padding:12px;border-radius:12px;background:#f1f7ff;border:1px solid #cfe2ff;margin:10px 0}.admin-nav{display:flex;gap:7px;overflow:auto;padding-bottom:8px}.tab{white-space:nowrap}.hidden{display:none!important}.empty{padding:30px;text-align:center;color:var(--muted);border:1px dashed var(--border);border-radius:15px;background:#fff}
+.toast{position:fixed;bottom:18px;right:18px;z-index:80;background:#14243b;color:#fff;padding:12px 16px;border-radius:12px;display:none;max-width:90%}.toast.show{display:block}
+@media(max-width:800px){.hero-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.result-grid{grid-template-columns:1fr}.stat-grid{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.nav{align-items:flex-start;padding:9px 0}.nav-actions{justify-content:flex-end}.brand{font-size:1.1rem}.searchrow{flex-direction:column}.searchrow .btn{width:100%}}
+@media(max-width:430px){.container{width:92%}.btn{padding:9px 11px;font-size:.9rem}.stat b{font-size:1.4rem}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="brand">وين دواي؟<small>منصة خيرية لخدمة المرضى في السودان</small></div>
+    <div class="nav-actions">
+      <button class="btn secondary" onclick="openModal('pharmacyModal')">تسجيل صيدلية</button>
+      <button class="btn ghost" onclick="openModal('professionalModal')">بوابة الصيادلة/الأطباء</button>
+      <button class="btn ghost" onclick="openModal('adminModal')">الإدارة</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+<div class="container hero-grid">
+  <div>
+    <div class="sign">وين دواي؟</div>
+    <h1>ابحث عن دوائك… واعرف وين موجود</h1>
+    <p>اكتب اسم الدواء حتى لو أخطأت في الكتابة. سيحاول النظام تصحيح الاسم ثم يعرض الصيدليات المسجلة الأقرب والأحدث بيانات.</p>
+    <div class="searchbox">
+      <div class="searchrow">
+        <input id="searchInput" placeholder="مثال: باندول، أموكسسلين، insulin..." autocomplete="off">
+        <button class="btn" onclick="searchDrug()">بحث عن الدواء</button>
+      </div>
+      <div class="hint" id="searchHint">يمكنك السماح للموقع بمعرفة موقعك لفرز النتائج حسب الأقرب.</div>
+      <div class="actions">
+        <button class="btn secondary" onclick="useLocation()">📍 تحديد موقعي</button>
+        <button class="btn ghost" onclick="showAllDrugs()">📋 قائمة الأدوية</button>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>كيف يعمل؟</h3>
+    <div class="list">
+      <div class="list-item">1️⃣ اكتب اسم الدواء.</div>
+      <div class="list-item">2️⃣ النظام يصحح الأخطاء الإملائية المحتملة.</div>
+      <div class="list-item">3️⃣ تظهر الصيدليات التي أعلنت التوفر والسعر.</div>
+      <div class="list-item">4️⃣ اتصل بالصيدلية للتأكد قبل الذهاب.</div>
+      <div class="list-item">5️⃣ إذا لم يوجد الدواء، اطلب تنبيهاً عند توفره.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="section-title"><h2>نتائج البحث</h2><span id="resultCount">لم يتم البحث بعد</span></div>
+<div id="results" class="result-grid"><div class="empty">اكتب اسم الدواء واضغط «بحث عن الدواء».</div></div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="section-title"><h2>الأدوية الأكثر طلباً</h2><span>تُحدَّث من نشاط البحث</span></div>
+<div id="popularDrugs" class="cards"></div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="section-title"><h2>الأسئلة الشائعة</h2><span>أجوبة سريعة</span></div>
+<div id="faq" class="cards"></div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="section-title"><h2>شاركنا سؤالك أو تعليقك</h2></div>
+<div class="card">
+  <div class="form-grid">
+    <div class="field"><label>الاسم</label><input id="commentName" placeholder="اسمك (اختياري)"></div>
+    <div class="field"><label>رقم الهاتف</label><input id="commentPhone" inputmode="tel" placeholder="للتواصل عند الحاجة"></div>
+    <div class="field full"><label>السؤال / التعليق</label><textarea id="commentText" placeholder="اكتب سؤالك عن توفر الدواء أو طريقة استخدام المنصة..."></textarea></div>
+  </div>
+  <button class="btn" style="margin-top:10px" onclick="addComment()">إرسال</button>
+  <div id="comments" style="margin-top:15px"></div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+  «وين دواي؟» — مشروع خيري لمساعدة المرضى وذويهم في السودان.
+  <div>صاحبة المشروع: <b>Arfa Al-Jaili</b></div>
+  <div class="designer">Designed by Wail Elzain</div>
+</footer>
+
+<!-- Pharmacy -->
+<div id="pharmacyModal" class="modal"><div class="modal-box">
+<div class="modal-head"><h2>تسجيل صيدلية</h2><button class="close" onclick="closeModal('pharmacyModal')">إغلاق</button></div>
+
+<div class="form-grid">
+<div class="field"><label>اسم الصيدلية *</label><input id="pName"></div>
+<div class="field"><label>رقم التواصل *</label><input id="pPhone" inputmode="tel"></div>
+<div class="field"><label>الولاية/المدينة *</label><input id="pCity" value="الخرطوم"></div>
+<div class="field"><label>الحي / المنطقة</label><input id="pArea" placeholder="مثال: بحري"></div>
+<div class="field full"><label>موقع الصيدلية</label><input id="pMap" placeholder="رابط Google Maps أو الإحداثيات"></div>
+<div class="field"><label>اسم المستخدم</label><input id="pUser"></div>
+<div class="field"><label>كلمة المرور</label><input id="pPass" type="password"></div>
+</div>
+<button class="btn" style="margin-top:14px" onclick="registerPharmacy()">إرسال طلب التسجيل</button>
+</div></div>
+
+<!-- Professional -->
+<div id="professionalModal" class="modal"><div class="modal-box">
+<div class="modal-head"><h2>بوابة الصيادلة / الأطباء</h2><button class="close" onclick="closeModal('professionalModal')">إغلاق</button></div>
+
+<div class="form-grid">
+<div class="field"><label>اختيار الصيدلية</label><select id="proPharmacy"></select></div>
+<div class="field"><label>الدواء</label><select id="proDrug"></select></div>
+<div class="field"><label>الحالة</label><select id="proStatus"><option value="available">متوفر</option><option value="unavailable">غير متوفر</option></select></div>
+<div class="field"><label>السعر (اختياري)</label><input id="proPrice" inputmode="decimal" placeholder="بالجنيه السوداني"></div>
+<div class="field full"><label>متى قد يتوفر؟ (عند عدم التوفر)</label><input id="proEta" placeholder="مثال: خلال 3 أيام"></div>
+</div>
+<button class="btn" style="margin-top:14px" onclick="updateInventory()">حفظ تحديث الدواء</button>
+<hr style="border:0;border-top:1px solid var(--border);margin:22px 0">
+<div class="section-title"><h3>لائحة الأدوية</h3><span>يمكن البحث والتحديث</span></div>
+<div id="inventoryList"></div>
+</div></div>
+
+<!-- Admin -->
+<div id="adminModal" class="modal"><div class="modal-box">
+<div class="modal-head"><h2>لوحة الإدارة</h2><button class="close" onclick="closeModal('adminModal')">إغلاق</button></div>
+
+<div class="admin-nav">
+<button class="btn secondary tab" onclick="adminTab('overview')">نظرة عامة</button>
+<button class="btn secondary tab" onclick="adminTab('questions')">أكثر ما يُسأل</button>
+<button class="btn secondary tab" onclick="adminTab('pharmacies')">الصيدليات</button>
+<button class="btn secondary tab" onclick="adminTab('comments')">التعليقات</button>
+</div>
+<div id="adminContent"></div>
+</div></div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+/* DEVELOPER NOTES:
+   - Demo data is stored in localStorage for this frontend-only prototype.
+   - Production deployment should use a secure backend/database, authentication,
+     pharmacy approval workflow, centralized analytics, and real push/SMS/WhatsApp
+     notification services.
+   - Never store real passwords in localStorage.
+   - Pharmacy inventory changes should be server-authorized in production.
+*/
+
+const defaultDrugs=[
+{id:1,name:"باراسيتامول",aliases:["بنادول","باندول","paracetamol","panadol"],category:"مسكن وخافض حرارة"},
+{id:2,name:"أموكسيسيلين",aliases:["اموكسسلين","اموكسيسيلين","amoxicillin"],category:"مضاد حيوي"},
+{id:3,name:"إنسولين",aliases:["انسولين","insulin"],category:"دواء للسكري"},
+{id:4,name:"أزيثروميسين",aliases:["ازيثرومايسين","azithromycin"],category:"مضاد حيوي"},
+{id:5,name:"أملوديبين",aliases:["amlodipine","املودبين"],category:"ضغط الدم"},
+{id:6,name:"ميتفورمين",aliases:["metformin","متفورمين"],category:"السكري"}
+];
+const defaultPharmacies=[
+{id:1,name:"صيدلية النيل",phone:"0910000001",city:"الخرطوم",area:"الخرطوم",lat:15.5007,lng:32.5599,approved:true},
+{id:2,name:"صيدلية بحري الخيرية",phone:"0910000002",city:"الخرطوم بحري",area:"بحري",lat:15.6500,lng:32.5500,approved:true},
+{id:3,name:"صيدلية أم درمان المركزية",phone:"0910000003",city:"أم درمان",area:"أم درمان",lat:15.6500,lng:32.4800,approved:true}
+];
+const defaultInventory=[
+{pharmacyId:1,drugId:1,status:"available",price:"1500",updated:Date.now()},
+{pharmacyId:1,drugId:2,status:"unavailable",price:"",eta:"خلال 3 أيام",updated:Date.now()},
+{pharmacyId:2,drugId:1,status:"available",price:"1700",updated:Date.now()},
+{pharmacyId:2,drugId:3,status:"available",price:"",updated:Date.now()},
+{pharmacyId:3,drugId:4,status:"available",price:"2500",updated:Date.now()}
+];
+function get(key, fallback){try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback}catch(e){return fallback}}
+function set(key,v){localStorage.setItem(key,JSON.stringify(v))}
+let drugs=get("wd_drugs",defaultDrugs), pharmacies=get("wd_pharmacies",defaultPharmacies), inventory=get("wd_inventory",defaultInventory);
+let comments=get("wd_comments",[]);
+let searches=get("wd_searches",{});
+let questions=get("wd_questions",{});
+let userPos=null;
+
+function normalize(s){return String(s||"").toLowerCase().trim().replace(/[أإآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/[ًٌٍَُِّْـ]/g,"").replace(/[^a-z0-9\u0600-\u06ff]/g,"")}
+function distance(a,b,c,d){const R=6371,rad=x=>x*Math.PI/180;const p1=rad(a),p2=rad(c),dp=rad(c-a),dl=rad(d-b);const x=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2;return 2*R*Math.asin(Math.sqrt(x))}
+function levenshtein(a,b){const m=a.length,n=b.length,dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return dp[m][n]}
+function findDrug(q){const nq=normalize(q);if(!nq)return null;let exact=drugs.find(d=>[d.name,...d.aliases].some(x=>normalize(x)===nq));if(exact)return {drug:exact,corrected:false};let best=null,score=999;for(const d of drugs){for(const x of [d.name,...d.aliases]){const nx=normalize(x);let s=levenshtein(nq,nx);if(nx.includes(nq)||nq.includes(nx))s-=2;if(s<score){score=s;best=d}}}return score<=Math.max(3,Math.ceil(nq.length*.45))?{drug:best,corrected:true}:null}
+function searchDrug(){const q=document.getElementById("searchInput").value;const found=findDrug(q);if(!found){document.getElementById("resultCount").textContent="لم نجد اسماً قريباً";document.getElementById("results").innerHTML='<div class="empty">لم نجد دواء مطابقاً. جرّب الاسم العلمي أو اسماً أقصر.</div>';return}searches[found.drug.id]=(searches[found.drug.id]||0)+1;set("wd_searches",searches);const n=found.drug.name;document.getElementById("searchHint").textContent=found.corrected?`تم تصحيح البحث إلى: ${n}`:`نتائج: ${n}`;renderResults(found.drug)}
+function renderResults(drug){let rows=inventory.filter(x=>x.drugId===drug.id);rows=rows.map(x=>({...x,p:pharmacies.find(p=>p.id===x.pharmacyId)})).filter(x=>x.p&&x.p.approved);rows.sort((a,b)=>{if(a.status!==b.status)return a.status==="available"?-1:1;if(userPos)return distance(userPos.lat,userPos.lng,a.p.lat,a.p.lng)-distance(userPos.lat,userPos.lng,b.p.lat,b.p.lng);return 0});document.getElementById("resultCount").textContent=`${rows.length} صيدلية مسجلة`;if(!rows.length){document.getElementById("results").innerHTML='<div class="empty">لا توجد بيانات لهذا الدواء حالياً. يمكنك طلب تنبيه عند توفره.</div>';return}document.getElementById("results").innerHTML=rows.map(x=>{const dist=userPos?` • ${distance(userPos.lat,userPos.lng,x.p.lat,x.p.lng).toFixed(1)} كم`:'';return `<div class="card pharmacy-card"><h3>${x.p.name}</h3><div class="muted">${x.p.city} — ${x.p.area||""}</div><div class="meta"><span class="badge ${x.status==="available"?"ok":"no"}">${x.status==="available"?"متوفر":"غير متوفر"}</span><span>آخر تحديث: ${new Date(x.updated||Date.now()).toLocaleString("ar-EG")}</span><span>${dist}</span></div>${x.status==="available"?`<div class="price">${x.price?x.price+" جنيه سوداني":"السعر غير محدد"}</div>`:`<div class="badge wait">متوقع: ${x.eta||"غير محدد"}</div>`}<div class="actions"><a class="btn" href="tel:${x.p.phone}">📞 اتصال</a><a class="btn secondary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(x.p.name+" "+x.p.city+" "+(x.p.area||""))}">📍 الخريطة</a>${x.status!=="available"?`<button class="btn ghost" onclick="requestAlert(${drug.id},${x.p.id})">🔔 اطلب تنبيهاً</button>`:`<button class="btn ghost" onclick="requestAlert(${drug.id},${x.p.id})">🔄 تأكيد التوفر</button>`}</div><div class="muted" style="margin-top:8px">للتأكد من وجود الدواء قبل الذهاب: ${x.p.phone}</div></div>`}).join("")}
+function useLocation(){if(!navigator.geolocation){toast("المتصفح لا يدعم تحديد الموقع");return}navigator.geolocation.getCurrentPosition(pos=>{userPos={lat:pos.coords.latitude,lng:pos.coords.longitude};toast("تم تحديد موقعك");const q=document.getElementById("searchInput").value;if(q)searchDrug()},()=>toast("تعذر تحديد الموقع. يمكنك استخدام البحث بدون الموقع."),{enableHighAccuracy:true,timeout:10000})}
+function requestAlert(drugId,pharmacyId){let a=get("wd_alerts",[]);a.push({drugId,pharmacyId,date:Date.now()});set("wd_alerts",a);toast("تم تسجيل طلب التنبيه. ستحتاج النسخة الحقيقية إلى خدمة إشعارات/خادم لإرساله فعلياً.");}
+function showAllDrugs(){document.getElementById("searchInput").value="";document.getElementById("resultCount").textContent=`${drugs.length} أدوية في القائمة`;document.getElementById("results").innerHTML=drugs.map(d=>`<div class="card"><h3>${d.name}</h3><div class="muted">${d.category}</div><button class="btn secondary" style="margin-top:10px" onclick="document.getElementById('searchInput').value='${d.name}';searchDrug()">ابحث عنه</button></div>`).join("")}
+function renderPopular(){let arr=drugs.map(d=>({d,c:searches[d.id]||0})).sort((a,b)=>b.c-a.c);document.getElementById("popularDrugs").innerHTML=arr.slice(0,6).map(x=>`<div class="card"><h3>${x.d.name}</h3><div class="muted">${x.d.category}</div><div style="margin-top:8px">عدد عمليات البحث: <b>${x.c}</b></div></div>`).join("")}
+function renderFaq(){const base=[["كيف أتأكد أن الدواء موجود؟","اتصل بالصيدلية على الرقم الظاهر قبل الذهاب، لأن الكمية قد تتغير."],["هل الأسعار مضمونة؟","السعر المعلن هو آخر سعر أدخلته الصيدلية، ويجب التأكد منه بالاتصال."],["ماذا أفعل إذا لم أجد الدواء؟","استخدم «اطلب تنبيهاً» لمتابعة توفره."],["هل الخدمة متاحة في كل السودان؟","التصميم مهيأ للتوسع، لكن البيانات تعتمد على الصيدليات المسجلة في كل منطقة."]];document.getElementById("faq").innerHTML=base.map((x,i)=>`<div class="card"><h3>${x[0]}</h3><div class="muted">${x[1]}</div></div>`).join("")}
+function addComment(){const text=document.getElementById("commentText").value.trim();if(!text){toast("اكتب السؤال أو التعليق أولاً");return}comments.unshift({id:Date.now(),name:document.getElementById("commentName").value.trim()||"مستخدم",phone:document.getElementById("commentPhone").value.trim(),text,date:Date.now(),reply:""});set("wd_comments",comments);document.getElementById("commentText").value="";renderComments();toast("تم إرسال التعليق")}
+function renderComments(){document.getElementById("comments").innerHTML=comments.length?comments.slice(0,8).map(c=>`<div class="list-item" style="margin-top:8px"><b>${c.name}</b><div>${c.text}</div>${c.reply?`<div class="notice"><b>رد الإدارة:</b> ${c.reply}</div>`:"<div class='muted'>بانتظار الرد</div>"}</div>`).join(""):'<div class="empty">لا توجد تعليقات بعد.</div>'}
+function registerPharmacy(){const p={id:Date.now(),name:document.getElementById("pName").value.trim(),phone:document.getElementById("pPhone").value.trim(),city:document.getElementById("pCity").value.trim(),area:document.getElementById("pArea").value.trim(),map:document.getElementById("pMap").value.trim(),approved:true,requestDate:Date.now()};if(!p.name||!p.phone){toast("اسم الصيدلية ورقم التواصل مطلوبان");return}pharmacies.push(p);set("wd_pharmacies",pharmacies);closeModal("pharmacyModal");toast("تم تسجيل الصيدلية وإضافتها مباشرة إلى قائمة الصيدليات")}
+function fillProfessional(){document.getElementById("proPharmacy").innerHTML=pharmacies.filter(p=>p.approved).map(p=>`<option value="${p.id}">${p.name}</option>`).join("");document.getElementById("proDrug").innerHTML=drugs.map(d=>`<option value="${d.id}">${d.name}</option>`).join("");renderInventory()}
+function updateInventory(){const pharmacyId=+document.getElementById("proPharmacy").value,drugId=+document.getElementById("proDrug").value,status=document.getElementById("proStatus").value,price=document.getElementById("proPrice").value.trim(),eta=document.getElementById("proEta").value.trim();let row=inventory.find(x=>x.pharmacyId===pharmacyId&&x.drugId===drugId);if(!row){row={pharmacyId,drugId};inventory.push(row)}Object.assign(row,{status,price,eta,updated:Date.now()});set("wd_inventory",inventory);renderInventory();toast("تم تحديث حالة الدواء والسعر")}
+function renderInventory(){const rows=inventory.map(x=>({...x,p:pharmacies.find(p=>p.id===x.pharmacyId),d:drugs.find(d=>d.id===x.drugId)})).filter(x=>x.p&&x.d);document.getElementById("inventoryList").innerHTML=rows.length?rows.map(x=>`<div class="list-item" style="margin:7px 0"><b>${x.d.name}</b> — ${x.p.name} <span class="badge ${x.status==="available"?"ok":"no"}">${x.status==="available"?"متوفر":"غير متوفر"}</span><div class="muted">${x.price?x.price+" جنيه":""} ${x.eta?" • "+x.eta:""} • تحديث ${new Date(x.updated).toLocaleString("ar-EG")}</div></div>`).join(""):'<div class="empty">لا توجد بيانات.</div>'}
+function adminTab(tab){const el=document.getElementById("adminContent");if(tab==="overview"){const approved=pharmacies.filter(p=>p.approved).length;const orders=get("wd_alerts",[]).length;el.innerHTML=`<div class="stat-grid"><div class="card stat"><b>${pharmacies.length}</b>صيدليات مسجلة</div><div class="card stat"><b>${approved}</b>صيدليات متاحة</div><div class="card stat"><b>${inventory.length}</b>سجلات أدوية</div><div class="card stat"><b>${orders}</b>طلبات تنبيه</div></div>`}
+if(tab==="questions"){let arr=drugs.map(d=>({d,c:searches[d.id]||0})).sort((a,b)=>b.c-a.c);el.innerHTML='<h3>الأدوية الأكثر بحثاً</h3>'+arr.map(x=>`<div class="list-item" style="margin:7px 0">${x.d.name}<b style="float:left">${x.c}</b></div>`).join("")+'<h3 style="margin-top:20px">طلبات التنبيه</h3>'+get("wd_alerts",[]).length}
+if(tab==="pharmacies"){el.innerHTML=pharmacies.map(p=>`<div class="list-item" style="margin:7px 0"><b>${p.name}</b> — ${p.phone} — ${p.city} ${p.area||""} <span class="badge ${p.approved?"ok":"wait"}">مسجلة ومتاحة</span>${!p.approved?`<button class="btn" style="float:left" onclick="approvePharmacy(${p.id})">اعتماد</button>`:""}</div>`).join("")}
+if(tab==="comments"){el.innerHTML=comments.length?comments.map(c=>`<div class="card" style="margin:8px 0"><b>${c.name}</b><div>${c.text}</div><textarea id="r${c.id}" placeholder="اكتب الرد" style="width:100%;margin-top:8px;padding:9px;border:1px solid var(--border);border-radius:10px">${c.reply||""}</textarea><button class="btn" style="margin-top:7px" onclick="replyComment(${c.id})">حفظ الرد</button></div>`).join(""):'<div class="empty">لا توجد تعليقات.</div>'}}
+function approvePharmacy(id){const p=pharmacies.find(x=>x.id===id);if(p){p.approved=true;set("wd_pharmacies",pharmacies);adminTab("pharmacies");toast("تم تحديث حالة الصيدلية")}}
+function replyComment(id){const c=comments.find(x=>x.id===id);if(c){c.reply=document.getElementById("r"+id).value;set("wd_comments",comments);adminTab("comments");toast("تم حفظ الرد")}}
+function openModal(id){document.getElementById(id).classList.add("show");if(id==="professionalModal")fillProfessional();if(id==="adminModal")adminTab("overview")}
+function closeModal(id){document.getElementById(id).classList.remove("show")}
+function toast(t){const x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),3500)}
+window.addEventListener("click",e=>{if(e.target.classList.contains("modal"))e.target.classList.remove("show")});
+document.getElementById("searchInput").addEventListener("keydown",e=>{if(e.key==="Enter")searchDrug()});
+renderPopular();renderFaq();renderComments();
+</script>
+
+<script src="app-config.js"></script>
+<script>
+/*
+ WINDawai integration layer:
+ - The frontend remains usable in demo mode.
+ - When Supabase public URL + anon key are supplied in app-config.js, the
+   production adapter can be enabled.
+ - Never put a Supabase service-role key here.
+*/
+window.WindawaiIntegration = {
+  isConfigured() {
+    const c = window.WINDAWAI_CONFIG || {};
+    return !!(c.supabaseUrl && c.supabaseAnonKey);
+  },
+  async ping() {
+    if (!this.isConfigured()) return {ok:false, reason:"not-configured"};
+    try {
+      const r = await fetch(this.url("/rest/v1/pharmacies?select=id&limit=1"), {
+        headers: {"apikey": window.WINDAWAI_CONFIG.supabaseAnonKey,
+                  "Authorization":"Bearer "+window.WINDAWAI_CONFIG.supabaseAnonKey}
+      });
+      return {ok:r.ok, status:r.status};
+    } catch(e) { return {ok:false, reason:"network"}; }
+  },
+  url(path) { return window.WINDAWAI_CONFIG.supabaseUrl.replace(/\/$/,"")+path; }
+};
+</script>
+
+<script>if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));}</script>
+</body>
+</html>
