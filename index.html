@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0757a6">
+<title>وين دواي؟</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app-config.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>وين دواي؟</h1>
+    <p>منصة خيرية لخدمة المرضى في السودان</p>
+  </div>
+  <button class="secondary" onclick="openPharmacy()">تسجيل صيدلية</button>
+</header>
+
+<main class="container">
+  <section class="hero card">
+    <h2>ابحث عن دوائك</h2>
+    <p>اكتب اسم الدواء حتى لو كانت الكتابة غير دقيقة، وسنحاول تصحيحها.</p>
+    <div class="searchRow">
+      <input id="drugInput" autocomplete="off" placeholder="مثال: باراسيتامول">
+      <button onclick="searchDrug()">بحث عن الدواء</button>
+    </div>
+    <div id="suggestions"></div>
+    <div class="actions">
+      <button class="secondary" onclick="useLocation()">📍 تحديد موقعي</button>
+      <button class="secondary" onclick="loadDrugList()">📋 قائمة الأدوية</button>
+    </div>
+  </section>
+
+  <section id="results" class="card hidden"></section>
+
+  <section class="card">
+    <h2>كيف يعمل؟</h2>
+    <div class="steps">
+      <div><b>1</b><span>اكتب اسم الدواء.</span></div>
+      <div><b>2</b><span>يصحح النظام الأخطاء المحتملة.</span></div>
+      <div><b>3</b><span>تظهر الصيدليات التي أعلنت توفره والسعر.</span></div>
+      <div><b>4</b><span>يمكنك التواصل مع الصيدلية للتأكد قبل الذهاب.</span></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>أسئلة وتعليقات المرضى</h2>
+    <textarea id="commentText" placeholder="اكتب سؤالك أو تعليقك"></textarea>
+    <button onclick="sendComment()">إرسال</button>
+    <div id="comments"></div>
+  </section>
+</main>
+
+<footer>
+  <small>صاحبة المشروع: Arfa Al-Jaili · المصمم: Wail Elzain</small>
+</footer>
+
+<div id="modal" class="modal hidden">
+  <div class="modalBox">
+    <button class="close" onclick="closeModal()">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+</body>
+</html>
