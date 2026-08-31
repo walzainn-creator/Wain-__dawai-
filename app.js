@@ -36,7 +36,36 @@ async function loadAdmin(){const {data:{user}}=await sb.auth.getUser();if(!user)
 async function loadAdminStats(){const types=["page_view","drug_search","pharmacy_contact","pharmacy_registration"];let html="";for(const t of types){const {count}=await sb.from("analytics_events").select("*",{count:"exact",head:true}).eq("event_type",t);html+=`<div class="result"><b>${t}</b><h2>${count||0}</h2></div>`}document.getElementById("stats").innerHTML=html}
 async function loadTopQuestions(){const {data}=await sb.from("analytics_events").select("metadata").eq("event_type","drug_search").limit(2000);const m={};(data||[]).forEach(x=>{let q=x.metadata?.query;if(q)m[q]=(m[q]||0)+1});const arr=Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,15);document.getElementById("topQuestions").innerHTML=arr.map(x=>`<div class="result">${escapeHtml(x[0])} <b>(${x[1]})</b></div>`).join("")||"<p>لا توجد بيانات بعد.</p>"}
 async function loadAdminComments(){const {data}=await sb.from("patient_comments").select("*").order("created_at",{ascending:false}).limit(50);document.getElementById("adminComments").innerHTML=(data||[]).map(x=>`<div class="result"><b>${escapeHtml(x.comment)}</b>${x.reply?`<p>الرد: ${escapeHtml(x.reply)}</p>`:`<textarea id="rep-${x.id}" placeholder="اكتب الرد"></textarea><button onclick="replyComment('${x.id}')">حفظ الرد</button>`}</div>`).join("")}
-async function replyComment(id){const text=document.getElementById("rep-"+id).value.trim();if(!text)return;await sb.from("patient_comments").update({reply:text}).eq("id",id);loadAdminComments()}
+async function async function replyComment(id) {
+    const input = document.getElementById("rep-" + id);
+
+    if (!input) {
+        alert("تعذر العثور على خانة الرد.");
+        return;
+    }
+
+    const text = input.value.trim();
+
+    if (!text) {
+        alert("اكتب الرد أولاً.");
+        return;
+    }
+
+    const { error } = await sb
+        .from("patient_comments")
+        .update({ reply: text })
+        .eq("id", id);
+
+    if (error) {
+        console.error(error);
+        alert("تعذر حفظ الرد:\n" + error.message);
+        return;
+    }
+
+    await loadAdminComments();
+
+    alert("تم حفظ الرد بنجاح.");
+}
 async function loadAdminPharmacies(){const {data}=await sb.from("pharmacies").select("*").order("created_at",{ascending:false});document.getElementById("pharmacies").innerHTML=(data||[]).map(p=>`<div class="result"><b>${escapeHtml(p.name)}</b><p>${escapeHtml(p.address||"")} · ${escapeHtml(p.phone)}</p></div>`).join("")}
 function openModal(html){document.getElementById("modalContent").innerHTML=html;document.getElementById("modal").classList.remove("hidden")}
 function closeModal(){document.getElementById("modal").classList.add("hidden")}
